@@ -174,8 +174,8 @@ def has_task_permission(doc, perm_type=None, user=None):
         return True
     if "Projects Manager" in frappe.get_roles(user):
         return True
-    # if "Projects User" in frappe.get_roles(user):
-    #     return True
+    if "Projects User" in frappe.get_roles(user):
+        return True
     if doc.owner == user:
         return True
 
@@ -238,6 +238,8 @@ def has_agile_sprint_permission(doc, perm_type=None, user=None):
         return True
     if "Projects Manager" in frappe.get_roles(user):
         return True
+    if "Projects User" in frappe.get_roles(user):
+        return True
     if doc.owner == user:
         return True
 
@@ -283,6 +285,8 @@ def has_test_cycle_permission(doc, perm_type=None, user=None):
     if "Administrator" in frappe.get_roles(user):
         return True
     if "Projects Manager" in frappe.get_roles(user):
+        return True
+    if "Projects User" in frappe.get_roles(user):
         return True
     if doc.owner_user == user:
         return True
@@ -373,6 +377,8 @@ def has_test_case_permission(doc, perm_type=None, user=None):
     if "Administrator" in roles:
         return True
     if "Projects Manager" in roles:
+        return True
+    if "Projects User" in roles:
         return True
 
     # Allow creation if user is in the project
@@ -494,6 +500,8 @@ def has_test_exec_permission(doc, perm_type=None, user=None):
     if "Administrator" in roles:
         return True
     if "Projects Manager" in roles:
+        return True
+    if "Projects User" in roles:
         return True
     if doc.owner == user:
         return True
